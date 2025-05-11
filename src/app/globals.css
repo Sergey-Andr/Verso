@@ -1,0 +1,92 @@
+@import "tailwindcss";
+
+:root {
+    --background: #ffffff;
+    --foreground: #171717;
+    --soft-purple: #B397FD;
+    --violet: #612FAB;
+    --deep-indigo: #2E2E5A;
+    --charcoal-indigo: #1C1B33;
+    --vivid-orchid: #D24FC3;
+    --medium-orchid: #CB53D1;
+
+}
+
+@theme inline {
+    --color-background: var(--background);
+    --color-foreground: var(--foreground);
+    --color-soft-purple: var(--soft-purple);
+    --color-violet: var(--violet);
+    --color-deep-indigo: var(--deep-indigo);
+}
+
+@theme {
+    --text-main-temp: clamp(2rem, 3.125vw, 15rem);
+    --leading-main-temp: clamp(2rem, 3.125vw, 15rem);
+    --text-main-temp-min: clamp(1rem, 1.875vw, 15rem);
+    --leading-main-temp-min: clamp(1rem, 1.875vw, 15rem);
+    --text-main-forecast: clamp(0.5rem, 1.5625vw, 15rem);
+    --leading-main-forecast: clamp(0.5rem, 1.5625vw, 15rem);
+    --text-main-feels: clamp(0.5rem, 1.041vw, 15rem);
+    --leading-main-feels: clamp(0.5rem, 1.041vw, 15rem);
+    --text-main-week-day: clamp(1.5rem, 2.083vw, 15rem);
+    --leading-main-week-day: clamp(1.5rem, 2.083vw, 15rem);
+    --text-main-date: clamp(0.5rem, 1.041vw, 15rem);
+    --leading-main-date: clamp(0.5rem, 1.041vw, 15rem);
+    --text-main-city: clamp(0.5rem, 0.9375vw, 15rem);
+    --leading-main-city: clamp(0.5rem, 0.9375vw, 15rem);
+    --text-header-app-name: clamp(2rem, 1.875vw, 15rem);
+    --leading-header-app-name: clamp(2rem, 1.875vw, 15rem);
+    --text-header-search-city: clamp(0.75rem, 0.88vw, 15rem);
+    --leading-header-search-city: clamp(0.75rem, 0.75vw, 15rem);
+    --text-label: clamp(0.75rem, 1.45vw, 15rem);
+    --text-highlight-name: clamp(0.75rem, 0.83vw, 15rem);
+    --text-highlight-wind-speed-number: clamp(0.75rem, 1.25vw, 15rem);
+    --text-highlight-wind-speed-text: clamp(0.75rem, 0.83vw, 15rem);
+    --leading-highlight-wind: clamp(0.25rem, 0.75vw, 15rem);
+    --text-highlight-main-text: clamp(2rem, 1.875vw, 15rem);
+    --leading-highlight-main-text: clamp(2rem, 1.875vw, 15rem);
+    --text-highlight-subtitle: clamp(0.25rem, 0.83vw, 15rem);
+    --h-header: clamp(3rem, 5.15vmin, 30rem);
+    --w-header: clamp(3rem, 5.15vmin, 30rem);
+    --text-forecast-label: clamp(0.5rem, 0.9375vw, 15rem);
+    --leading-forecast-label: clamp(0.5rem, 0.9375vw, 15rem);
+    --text-forecast-temperature: clamp(0.75rem, 1.25vw, 15rem);
+    --text-temperatures-active-temp: clamp(0.25rem, 0.83vw, 15rem);
+    --text-temperatures-active-temp-symbol: clamp(0.25rem, 0.625vw, 15rem);
+    --text-temperatures-xy-axis: clamp(0.75rem, 0.83vw, 15rem);
+    --background-image-dark-indigo: linear-gradient(to bottom, var(--deep-indigo), var(--charcoal-indigo));
+    --background-image-pink-violet: linear-gradient(to right, #3859B2, #C556E0, #D24FC3);
+    --background-image-pink-violet-bottom: linear-gradient(to bottom, #3859B2, #C556E0, #D24FC3);
+    --shadow-violet: 0 0 20px 0px var(--violet);
+}
+
+@media (prefers-color-scheme: dark) {
+    :root {
+        --background: #0a0a0a;
+        --foreground: #ededed;
+    }
+}
+
+@utility bg-conic-gradient {
+    background: conic-gradient(
+            #612FAB00 5%,
+            #612FAB 30%,
+            #612FAB00 65%,
+            #612FAB 90%
+    );
+}
+
+@layer mediascreens {
+    @media (min-width: 2550px) {
+        .quad-header-left {
+            left: 25%;
+        }
+    }
+}
+
+body {
+    background: var(--background);
+    color: var(--foreground);
+    font-family: Arial, Helvetica, sans-serif;
+}

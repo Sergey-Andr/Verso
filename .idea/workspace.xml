@@ -1,0 +1,140 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="fddb583b-2c2a-497e-9c8b-494d252e8753" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/.prettierrc" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/background-v1.svg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/background-v2.svg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/broken_clouds.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/clear_sky.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/dew_point.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/few_clouds.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/house.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/humidity.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/logo.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/mist.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/point.svg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/pressure.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/rain.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/scattered_clouds.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/settings.svg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/shower_rain.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/snow.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/sunrise.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/sunrise_steep.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/thunderstorm.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/uv_index.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/wind.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/wind_direction.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/zoom.svg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/app/(components)/Header/index.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/app/(components)/HighlightBlock/index.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/app/(components)/MainContentBlock/index.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/app/(components)/SixDaysForecastBlock/components/ForecastDayCard/index.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/app/(components)/SixDaysForecastBlock/index.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/app/(components)/TemperaturesBlock/index.tsx" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FormatOnSaveOptions">
+    <option name="myRunOnSave" value="true" />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="OptimizeOnSaveOptions">
+    <option name="myRunOnSave" value="true" />
+  </component>
+  <component name="ProjectColorInfo">{
+  &quot;customColor&quot;: &quot;&quot;,
+  &quot;associatedIndex&quot;: 2
+}</component>
+  <component name="ProjectId" id="2wonpNsUGA5udvSrZrVHwzRAkSm" />
+  <component name="ProjectLevelVcsManager">
+    <ConfirmationsSetting value="2" id="Add" />
+  </component>
+  <component name="ProjectViewState">
+    <option name="autoscrollFromSource" value="true" />
+    <option name="autoscrollToSource" value="true" />
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="openDirectoriesWithSingleClick" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;Node.js.page.js.executor&quot;: &quot;Run&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
+    &quot;code.cleanup.on.save&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;master&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.standard&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.standard&quot;: &quot;&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;npm.dev.executor&quot;: &quot;Run&quot;,
+    &quot;prettierjs.PrettierConfiguration.Package&quot;: &quot;C:\\ALLProjects\\verso_weather\\node_modules\\prettier&quot;,
+    &quot;rearrange.code.on.save&quot;: &quot;true&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;settings.javascript.linters.eslint&quot;,
+    &quot;ts.external.directory.path&quot;: &quot;C:\\Program Files\\JetBrains\\WebStorm 2024.2.1\\plugins\\javascript-plugin\\jsLanguageServicesImpl\\external&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  }
+}</component>
+  <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\ALLProjects\verso_weather\public" />
+    </key>
+  </component>
+  <component name="RunManager">
+    <configuration name="dev" type="js.build_tools.npm" temporary="true" nameIsGenerated="true">
+      <package-json value="$PROJECT_DIR$/package.json" />
+      <command value="run" />
+      <scripts>
+        <script value="dev" />
+      </scripts>
+      <node-interpreter value="project" />
+      <envs />
+      <method v="2" />
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="npm.dev" />
+      </list>
+    </recent_temporary>
+  </component>
+  <component name="SharedIndexes">
+    <attachedChunks>
+      <set>
+        <option value="bundled-js-predefined-d6986cc7102b-1632447f56bf-JavaScript-WS-243.26053.12" />
+      </set>
+    </attachedChunks>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="fddb583b-2c2a-497e-9c8b-494d252e8753" name="Changes" comment="" />
+      <created>1746716976749</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1746716976749</updated>
+      <workItem from="1746716978320" duration="3520000" />
+      <workItem from="1746760507115" duration="3859000" />
+      <workItem from="1746791020988" duration="9046000" />
+      <workItem from="1746806973315" duration="1110000" />
+      <workItem from="1746879195693" duration="2863000" />
+      <workItem from="1746949075402" duration="1246000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+</project>
