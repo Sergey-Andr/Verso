@@ -1,0 +1,10 @@
+export const MOMENT_FORMAT = "YYYY-MM-DD";
+export const LATEST_CITY = "latest-city";
+export const FIRST_CITY = "first-enter";
+export const HUNDRED_YEARS_STORE = 100 * 365 * 24 * 60 * 60 * 1000;
+export const REQUESTED_CITIES = "requested-cities" as const;
+export const USER_AGENT = "device-type";
+export const ASYNC_PANEL = "async-panel";
+export const ASYNC_PANEL_PENDING = "pending";
+export const ASYNC_PANEL_FETCHED = "fetched";
+export const PREV_PATH = "prev-path";

@@ -1,0 +1,236 @@
+{
+  "main": {
+    "id": "f19e9df4fa228dc0",
+    "type": "split",
+    "children": [
+      {
+        "id": "273e4d576ec0cf8b",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "65c4738107c48ef7",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "Components/00_Overview.md",
+                "mode": "source",
+                "source": false
+              },
+              "icon": "lucide-file",
+              "title": "00_Overview"
+            }
+          },
+          {
+            "id": "fd4baa3cd770f6e5",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "Components/CloudsTrackAnimation.md",
+                "mode": "source",
+                "source": false
+              },
+              "icon": "lucide-file",
+              "title": "CloudsTrackAnimation"
+            }
+          },
+          {
+            "id": "5addbc9583b57c46",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "Implementation Details/Desktop/Page Resolution.md",
+                "mode": "source",
+                "source": false
+              },
+              "icon": "lucide-file",
+              "title": "Page Resolution"
+            }
+          }
+        ],
+        "currentTab": 2
+      }
+    ],
+    "direction": "vertical"
+  },
+  "left": {
+    "id": "1b17fe2f7c860121",
+    "type": "split",
+    "children": [
+      {
+        "id": "ddc68bdead616cda",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "119cdcc9b3cf08c4",
+            "type": "leaf",
+            "state": {
+              "type": "file-explorer",
+              "state": {
+                "sortOrder": "alphabetical",
+                "autoReveal": false
+              },
+              "icon": "lucide-folder-closed",
+              "title": "Файловый менеджер"
+            }
+          },
+          {
+            "id": "b6ac7704e287ef3a",
+            "type": "leaf",
+            "state": {
+              "type": "search",
+              "state": {
+                "query": "",
+                "matchingCase": false,
+                "explainSearch": false,
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical"
+              },
+              "icon": "lucide-search",
+              "title": "Поиск"
+            }
+          },
+          {
+            "id": "8d70a59d7fa382cf",
+            "type": "leaf",
+            "state": {
+              "type": "bookmarks",
+              "state": {},
+              "icon": "lucide-bookmark",
+              "title": "Закладки"
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "horizontal",
+    "width": 246.5086555480957
+  },
+  "right": {
+    "id": "58015045a9390605",
+    "type": "split",
+    "children": [
+      {
+        "id": "818e465d047b68a8",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "1ff5eaa84eacfb72",
+            "type": "leaf",
+            "state": {
+              "type": "backlink",
+              "state": {
+                "file": "Без названия.md",
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical",
+                "showSearch": false,
+                "searchQuery": "",
+                "backlinkCollapsed": false,
+                "unlinkedCollapsed": true
+              },
+              "icon": "links-coming-in",
+              "title": "Обратные ссылки для Без названия"
+            }
+          },
+          {
+            "id": "1ad7de4d0792f62e",
+            "type": "leaf",
+            "state": {
+              "type": "outgoing-link",
+              "state": {
+                "file": "Без названия.md",
+                "linksCollapsed": false,
+                "unlinkedCollapsed": true
+              },
+              "icon": "links-going-out",
+              "title": "Исходящие ссылки из Без названия"
+            }
+          },
+          {
+            "id": "d90182ec0867b3ac",
+            "type": "leaf",
+            "state": {
+              "type": "tag",
+              "state": {
+                "sortOrder": "frequency",
+                "useHierarchy": true,
+                "showSearch": false,
+                "searchQuery": ""
+              },
+              "icon": "lucide-tags",
+              "title": "Теги"
+            }
+          },
+          {
+            "id": "2274a9e7a89c32bc",
+            "type": "leaf",
+            "state": {
+              "type": "outline",
+              "state": {
+                "file": "Без названия.md",
+                "followCursor": false,
+                "showSearch": false,
+                "searchQuery": ""
+              },
+              "icon": "lucide-list",
+              "title": "Структура Без названия"
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "horizontal",
+    "width": 300,
+    "collapsed": true
+  },
+  "left-ribbon": {
+    "hiddenItems": {
+      "switcher:Меню быстрого перехода": false,
+      "graph:Граф": false,
+      "canvas:Создать новый холст": false,
+      "daily-notes:Сегодняшняя заметка": false,
+      "templates:Вставить шаблон": false,
+      "command-palette:Открыть палитру команд": false,
+      "bases:Создать новую базу": false
+    }
+  },
+  "active": "5addbc9583b57c46",
+  "lastOpenFiles": [
+    "Implementation Details/Desktop/Main Big Backgroud.md",
+    "Implementation Details/Desktop/Page Resolution.md",
+    "Implementation Details/Mobile Panel.md",
+    "Implementation Details/Desktop",
+    "CSS/Shared/Style guide/Units of measurement.md",
+    "TypeScript style guide.md",
+    "Architecture/00_Overview.md",
+    "Implementation Details/Без названия.md",
+    "Implementation Details",
+    "Features/Weather Codes.md",
+    "Features",
+    "Docs Icons.md",
+    "Architecture/Types.md",
+    "Components/CloudsTrackAnimation.md",
+    "CloudsTrackAnimation.tsx~",
+    "Components/00_Overview.md",
+    "CloudsTrackAnimation 1.tsx",
+    "CloudsTrackAnimation.tsx",
+    "Components",
+    "Architecture/Naming.md",
+    "CSS/Shared/Style guide/Tailwind vs CSS.md",
+    "CSS/Mobile/Custom prefixes.md",
+    "CSS.md",
+    "CSS/Mobile/Custom.md",
+    "Custom.md",
+    "Architecture",
+    "CSS/Shared/CSS Srtucture.md",
+    "03_-_Custom_Prefixes.md",
+    "CSS/Shared/Style guide",
+    "CSS-Conventions.md",
+    "CSS/Shared/Pure_CSS_cases.md",
+    "CSS/Mobile"
+  ]
+}
