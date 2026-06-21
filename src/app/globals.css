@@ -94,6 +94,73 @@
     }
 }
 
+.test {
+    will-change: transform;
+
+    animation: cloud-drift-x 16s ease-in-out infinite alternate,
+    cloud-drift-y 11s ease-in-out infinite alternate,
+    cloud-organic-transform 18s ease-in-out infinite alternate,
+    var(--icon-extra-anim, none);
+
+}
+
+@keyframes cloud-drift-x {
+    0% {
+        translate: -12px 0;
+    }
+    100% {
+        translate: 12px 0;
+    }
+}
+
+@keyframes cloud-drift-y {
+    0% {
+        transform: translateY(-5px);
+    }
+    100% {
+        transform: translateY(5px);
+    }
+}
+
+@keyframes cloud-organic-transform {
+    0% {
+        rotate: -1.5deg;
+        scale: 0.98 1;
+    }
+    50% {
+        scale: 1.03 1.02;
+    }
+    100% {
+        rotate: 2deg;
+        scale: 1 0.99;
+    }
+}
+
+@keyframes sun-glow {
+    0%, 100% {
+        filter: drop-shadow(0 0 8px rgba(255, 200, 80, 0.5));
+    }
+    50% {
+        filter: drop-shadow(0 0 20px rgba(255, 200, 80, 0.85));
+    }
+}
+
+@keyframes sun-spin {
+    to {
+        rotate: 360deg;
+    }
+}
+
+.icon-sun {
+    --icon-extra-anim: sun-glow 4s ease-in-out infinite, sun-spin 60s linear infinite;
+}
+
+.cloud-back {
+    animation: cloud-drift-x 20s ease-in-out infinite alternate,
+    cloud-drift-y 14s ease-in-out infinite alternate,
+    cloud-organic-transform 21s ease-in-out infinite alternate;
+}
+
 html, body {
     min-height: 100vh;
     min-height: -webkit-fill-available;
@@ -109,16 +176,6 @@ body {
     color: var(--foreground);
     font-family: Arial, Helvetica, sans-serif;
     touch-action: none;
-}
-
-
-.shadowy-series path {
-    filter: brightness(0.8) contrast(1.05);
-    transition: filter 0.1s ease;
-}
-
-.shadowy-series path:hover {
-    filter: brightness(1) contrast(1);
 }
 
 @keyframes swipeHint {
@@ -292,6 +349,11 @@ body {
     @apply w-[var(--dynamic-visual-scale)] h-[var(--dynamic-visual-scale)];
 }
 
+.vp\:visual-bottom {
+    --dynamic-bottom: clamp(9.5625rem, calc(19.93rem - 38.57vw), 11.25rem);
+    @apply bottom-[var(--dynamic-bottom)];
+}
+
 @media (prefers-reduced-motion: reduce) {
     .animate-cloudsScrollTop,
     .animate-cloudsScrollBottom {
@@ -378,7 +440,8 @@ body {
 
 @media (min-height: 46.5625rem) /* 745 */ {
     .hsm\:dmt {
-        --dynamic-margin: clamp(16px, calc(43.7vh - 17.24rem), 6rem);
+        --panel-height: 0px;
+        --dynamic-margin: clamp(16px, calc(43.7vh - 17.24rem - var(--panel-height)), 6rem);
         @apply mt-[var(--dynamic-margin)];
     }
 }

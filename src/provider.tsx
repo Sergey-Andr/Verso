@@ -26,9 +26,7 @@ const Provider = ({
 
   return (
     <I18nProvider locale={locale} resources={resources}>
-      <WebSocketProvider>
-        <PWAInstallProvider>{pageContent}</PWAInstallProvider>
-      </WebSocketProvider>
+      <PWAInstallProvider>{pageContent}</PWAInstallProvider>
     </I18nProvider>
   );
 };

@@ -4,10 +4,9 @@ import Image from "next/image";
 import { motion } from "framer-motion";
 import cx from "clsx";
 import { MOMENT_FORMAT } from "@/constants";
-import moment from "moment/moment";
+import dayjs from "@/utils/dayjs";
 import { WeatherPageProps } from "@/app/(pages)/Home/types";
 import { useWeatherPanelAnimation } from "@/app/(pages)/Home/hooks/useWeatherPanelAnimation";
-import MainWeatherDisplay from "@/app/(pages)/Home/components/mobile/MainWeatherDisplay";
 import PanelBackground from "@/app/(pages)/Home/components/mobile/PanelBackground";
 import {
   HandleCitySearchBtn,
@@ -15,15 +14,17 @@ import {
 } from "@/app/(pages)/Home/types/handlers";
 import { useSubscription } from "@/providers/WebSocketProvider";
 import { useTranslation } from "react-i18next";
-import { ACTIVE_DAY } from "@/app/(pages)/Home/constants/shared";
+import { ACTIVE_DAY, CITY_LABEL } from "@/app/(pages)/Home/constants/shared";
 import { PULL_UP_LIMIT } from "@/app/(pages)/Home/constants/mobile";
 import { buildWeatherPageModel } from "@/app/(pages)/Home/utils/buildWeatherPageModel";
 import dynamic from "next/dynamic";
+import MainWeatherDisplay from "@/app/(pages)/Home/components/mobile/MainWeatherDisplay";
 
 const DayHighchartsMetrics = dynamic(
   () => import("@/app/(pages)/Home/components/shared/Highcharts"),
   { ssr: false },
 );
+
 const DayHighlight = dynamic(
   () => import("@/app/(pages)/Home/components/shared/DayHighlight"),
   { ssr: false },
@@ -45,24 +46,20 @@ const WeeklyForecastPanel = dynamic(
   },
 );
 
-/* Проблема в том что mix-blend-mode ломает backdrop-blur, оба блока находятся в одном родителе на одном уровне, но на разных слоях, z-index у backdrop ниже чем у второго.
-По задумке все блоки должны брать у друг-друга цвета и смешивая в одну цельную картину. Но mix-blend-mode ломает backdrop и у него появляется прозрачный ореол только на ПК через девтулза имитируя мобилку, на реальных мобильках такого нет.
-Если изолировать только блок с backdrop - ничего не произойдёт потому что isolate работает только на дочерние элементы которых нет у блока который просто растягивается по всему родителю.
-Если обернуть весь контент в блок с backdrop-blur - блюр пропадёт по неизвестной мне причине. Главная проблема является в том что mix-blend-mode и backdrop-blur находятся в одном контексте наложения, но они должны быть в одном контексте по дизайну.
-Что можно ещё сделать?, в разные контексты нельзя.
- */
-
 const WeatherPageMobile = ({
   weather,
   lon,
   lat,
   city,
+  isFirstEnter = false,
 }: Omit<WeatherPageProps, "country">) => {
   const [isCitySearchOpen, setIsCitySearchOpen] = useState(false);
   const [isSettingsOpen, setIsSettingsOpen] = useState(false);
-  const [activeDay, setActiveDay] = useState(moment().format(MOMENT_FORMAT));
-  const currentHour = moment().hour();
+  const [activeDay, setActiveDay] = useState(dayjs().format(MOMENT_FORMAT));
+  const currentHour = dayjs().hour();
   const { t, i18n } = useTranslation();
+  const [liveCity, setLiveCity] = useState(city);
+  useSubscription(CITY_LABEL, (v) => setLiveCity(v));
   const {
     stationaryContentY,
     backgroundOverlayOpacity,
@@ -91,8 +88,14 @@ const WeatherPageMobile = ({
   } = useWeatherPanelAnimation();
 
   useEffect(() => {
-    moment().locale(i18n.language);
+    dayjs.locale(i18n.language);
   }, [i18n.language]);
+
+  useEffect(() => {
+    if (!panelOpen) {
+      scrollRef.current?.scrollTo({ top: 0 });
+    }
+  }, [panelOpen]);
 
   const jsonLd = useMemo(
     () =>
@@ -132,11 +135,12 @@ const WeatherPageMobile = ({
           panelHeaderOpacity={panelHeaderOpacity}
           panelHeaderDisplay={panelHeaderDisplay}
           backgroundOverlayOpacity={backgroundOverlayOpacity}
-          city={city}
+          city={liveCity}
           weather={weather}
           activeDay={activeDay}
           currentHour={currentHour}
           t={t}
+          isFirstEnter={isFirstEnter}
         />
         {isPanelReady ? (
           <motion.section

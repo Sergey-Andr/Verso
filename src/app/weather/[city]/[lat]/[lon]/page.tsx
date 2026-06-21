@@ -1,10 +1,10 @@
 "use server";
-import moment from "moment";
+import dayjs from "@/utils/dayjs";
 import { MOMENT_FORMAT, USER_AGENT } from "@/constants";
 import { Metadata } from "next";
 import React from "react";
 import { fetchForecast } from "@/services/forecast";
-import { useTranslation } from "../../../../../../../i18n.server";
+import { useTranslation } from "../../../../../../i18n.server";
 import WeatherPage from "@/app/(pages)/Home/page.desktop";
 import WeatherPageMobile from "@/app/(pages)/Home/page.mobile";
 import { cookies, headers } from "next/headers";
@@ -18,8 +18,8 @@ export async function generateMetadata({ params }): Promise<Metadata> {
     lon: +lon,
   });
 
-  const currentDay = moment().format(MOMENT_FORMAT);
-  const currentHour = moment().hour();
+  const currentDay = dayjs().format(MOMENT_FORMAT);
+  const currentHour = dayjs().hour();
 
   const { t } = await useTranslation();
 
@@ -65,7 +65,7 @@ export default async function WeatherContent({ params }) {
         lat={lat}
         lon={lon}
         city={decodeURIComponent(city)}
-        country={decodeURIComponent(country)}
+        isFirstEnter={false}
       />
     );
   }

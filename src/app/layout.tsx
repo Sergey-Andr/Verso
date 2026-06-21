@@ -69,22 +69,6 @@ const resources: ResourcesOptions = {
   },
 };
 
-function detectDeviceType(h: Headers) {
-  const ch = h.get("sec-ch-ua-mobile");
-  const ua = userAgent({ headers: h });
-  const chMobile =
-    ch && (ch.includes("?1") || ch === "1")
-      ? true
-      : ch && (ch.includes("?0") || ch === "0")
-        ? false
-        : undefined;
-  const uaMobile =
-    ua.device.type === "mobile" ||
-    ua.device.type === "tablet" ||
-    /Mobile|Android|iPhone|iPad|iPod/i.test(ua.ua);
-  return (chMobile ?? uaMobile) ? "mobile" : "desktop";
-}
-
 export default async function RootLayout({
   children,
 }: {
@@ -93,7 +77,11 @@ export default async function RootLayout({
   const lng = (await cookies()).get(DEFAULT_LANG_STORE_NAME)?.value || "uk";
   await useTranslation();
   const h = await headers();
-  const deviceType = detectDeviceType(h);
+  const deviceType = /mobile|tablet|android|iphone|ipad|ipod/i.test(
+    userAgent({ headers: h }).ua,
+  )
+    ? "mobile"
+    : "desktop";
 
   return (
     <html

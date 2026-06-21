@@ -5,6 +5,8 @@ import MainBackgroundLayer from "@/app/(components)/MainBackgroundLayer";
 import WeekForecast from "@/app/(pages)/Home/components/desktop/WeekForecast";
 import { WeatherPageProps } from "@/app/(pages)/Home/types";
 import { useTranslation } from "react-i18next";
+import { useSubscription } from "@/providers/WebSocketProvider";
+import { CITY_LABEL } from "@/app/(pages)/Home/constants/shared";
 import { buildWeatherPageModel } from "@/app/(pages)/Home/utils/buildWeatherPageModel";
 import dynamic from "next/dynamic";
 import { useFpsMonitor } from "@/app/(pages)/Home/hooks/useFpsMonitor";
@@ -37,6 +39,8 @@ function WeatherPage({
   isFirstEnter = false,
 }: WeatherPageProps) {
   const [visible, setVisible] = useState(false);
+  const [liveCity, setLiveCity] = useState(city);
+  useSubscription(CITY_LABEL, (v) => setLiveCity(v));
   const dialogRef = useRef<HTMLDialogElement>(null);
   const { t, i18n } = useTranslation();
   const { jsonLd, currentDay } = useMemo(
@@ -116,7 +120,7 @@ function WeatherPage({
           <section className="relative w-[59rem] overflow-hidden rounded-3xl p-6">
             <MainInfo
               forecast={weather}
-              city={city}
+              city={liveCity}
               country={country}
               currentDay={currentDay}
               isFirstEnter={isFirstEnter}
@@ -136,7 +140,7 @@ function WeatherPage({
           <section className="relative flex h-full w-[59rem] flex-col overflow-hidden rounded-3xl p-6">
             <DayHighchartsMetrics
               forecast={weather}
-              city={city}
+              city={liveCity}
               currentDay={currentDay}
             />
             <MainBackgroundLayer />

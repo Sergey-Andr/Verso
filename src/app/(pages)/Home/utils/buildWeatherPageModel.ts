@@ -1,5 +1,5 @@
 "use client";
-import moment from "moment/moment";
+import dayjs from "@/utils/dayjs";
 import { MOMENT_FORMAT } from "@/constants";
 import { WeatherPageProps } from "@/app/(pages)/Home/types";
 import { TFunction } from "i18next";
@@ -15,8 +15,8 @@ export function buildWeatherPageModel({
   t: TFunction<"translation", undefined>;
   language: string;
 }) {
-  const currentDay = moment().format(MOMENT_FORMAT);
-  const currentHour = moment().hour();
+  const currentDay = dayjs().format(MOMENT_FORMAT);
+  const currentHour = dayjs().hour();
 
   const days = Object.values(weather)
     .map((d) => d.date)

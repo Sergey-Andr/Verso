@@ -1,8 +1,8 @@
 "use client";
 
-import React, { useRef, useState } from "react";
+import React, { memo, useMemo, useRef, useState } from "react";
 import HighchartsReact from "highcharts-react-official";
-import moment from "moment/moment";
+import dayjs from "@/utils/dayjs";
 import cx from "clsx";
 import { useTranslation } from "react-i18next";
 import { HighchartsOptionsProps, options } from "./options";
@@ -34,7 +34,7 @@ const DayHighchartsMetrics = ({
   const [chosenMetric, setChosenMetric] = useState<MetricKey>("temperature");
   const [timestamp, setTimestamp] = useState<number>(TIMESTAMP_24H);
   const [currentTime, setCurrentTime] = useState<number | string>(
-    moment().hour(),
+    dayjs().hour(),
   );
 
   const { highchartsMetrics, jsonld, hours, seriesData } = useHighchartsModel({
@@ -53,6 +53,18 @@ const DayHighchartsMetrics = ({
     city,
     currentTime,
   });
+
+  const chartOptions = useMemo(() => {
+    return options({
+      Highcharts: HighchartsInst,
+      customCategories: hours,
+      seriesData,
+      tickInterval: highchartsMetrics[chosenMetric].tickInterval,
+      chosenMetric,
+      currentTime,
+      isMobile,
+    } as HighchartsOptionsProps);
+  }, [HighchartsInst, hours, seriesData, chosenMetric, currentTime, isMobile]);
 
   const chartKey = `${selectedDay}-${chosenMetric}-${timestamp}-${isMobile}`;
 
@@ -147,20 +159,12 @@ const DayHighchartsMetrics = ({
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonld) }}
       />
 
-      <div className="relative z-50 h-fit w-full">
+      <div className="relative z-50 h-fit w-full touch-none">
         {isInitialized && HighchartsInst && (
           <HighchartsReact
             key={chartKey}
             highcharts={HighchartsInst}
-            options={options({
-              Highcharts: HighchartsInst,
-              customCategories: hours,
-              seriesData,
-              tickInterval: highchartsMetrics[chosenMetric].tickInterval,
-              chosenMetric,
-              currentTime,
-              isMobile,
-            } as HighchartsOptionsProps)}
+            options={chartOptions}
           />
         )}
 
@@ -226,4 +230,4 @@ const DayHighchartsMetrics = ({
   );
 };
 
-export default DayHighchartsMetrics;
+export default memo(DayHighchart

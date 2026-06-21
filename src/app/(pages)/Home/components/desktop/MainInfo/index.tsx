@@ -1,7 +1,7 @@
 "use client";
 import React, { useMemo, useState } from "react";
 import Image from "next/image";
-import moment from "moment/moment";
+import dayjs from "@/utils/dayjs";
 import { MOMENT_FORMAT } from "@/constants";
 import { useSubscription } from "@/providers/WebSocketProvider";
 import { useTranslation } from "react-i18next";
@@ -29,29 +29,29 @@ const MainInfo = ({
   const { t, i18n } = useTranslation();
 
   const { formattedDate, dayOfWeek, dateTime, isCurrentDay } = useMemo(() => {
-    const formattedDate = moment(
+    const formattedDate = dayjs(
       forecast[activeDay].date,
       `${MOMENT_FORMAT} HH:mm:ss`,
     )
       .locale(i18n.language)
       .format("DD MMMM, YYYY");
-    const dateTime = moment(
+    const dateTime = dayjs(
       forecast[activeDay].date,
       MOMENT_FORMAT,
     ).toISOString();
 
-    const dayOfWeek = moment(
+    const dayOfWeek = dayjs(
       forecast[activeDay].date,
       `${MOMENT_FORMAT} HH:mm:ss`,
     )
       .locale(i18n.language)
       .format("dddd");
 
-    const dayStr = moment(
+    const dayStr = dayjs(
       forecast[activeDay].date,
       `${MOMENT_FORMAT} HH:mm:ss`,
     ).format(MOMENT_FORMAT);
-    const isCurrentDay = dayStr === moment().format(MOMENT_FORMAT);
+    const isCurrentDay = dayStr === dayjs().format(MOMENT_FORMAT);
 
     return { formattedDate, dateTime, dayOfWeek, isCurrentDay };
   }, [activeDay, forecast, i18n.language]);
@@ -60,7 +60,7 @@ const MainInfo = ({
     setActiveDay(value);
   });
 
-  const currentHour = moment().hour();
+  const currentHour = dayjs().hour();
   return (
     <>
       <div className="relative mb-20 h-11 w-full">
@@ -70,7 +70,7 @@ const MainInfo = ({
             <p className="h-fit w-fit truncate">{city}</p>,&nbsp;
             <p className="h-fit w-fit truncate">{country}</p>
           </h1>
-          <AllowGeolocationPanel isFirstEnter={isFirstEnter} />
+          <AllowGeolocationPanel isFirstEnter={isFirstEnter} city={city} />
           <div className="bg-deep-indigo/20 absolute z-10 flex h-full min-h-8 w-full items-center justify-center rounded-full mix-blend-soft-light contrast-200" />
         </div>
         <div className="bg-violet/60 absolute top-0 left-0 -z-1 h-12 w-72 rounded-3xl blur-2xl brightness-125" />
@@ -85,11 +85,10 @@ const MainInfo = ({
       <Image
         src="/shared/house.png"
         alt=""
-        width={450}
-        height={244}
-        priority
-        fetchPriority="high"
-        className="absolute bottom-0 left-28 z-50"
+        width={400}
+        height={210}
+        className="absolute bottom-0 left-28 z-50 h-[244px] w-[450px]"
+        loading="lazy"
       />
       <div className="bg-violet/40 absolute bottom-0 left-1/4 -z-1 h-64 w-64 rounded-3xl blur-3xl brightness-125" />
       <Image

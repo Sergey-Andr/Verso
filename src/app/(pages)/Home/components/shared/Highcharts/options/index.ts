@@ -49,7 +49,6 @@ export const options = ({
       },
       series: {
         borderRadius: "50%",
-        className: "shadowy-series",
       },
       vector: {
         borderRadius: "50%",
@@ -123,9 +122,9 @@ export const options = ({
         color: {
           linearGradient: { x1: 0, y1: 0, x2: 0, y2: 1 },
           stops: [
-            [0.05, "#D24FC3FF"],
-            [0.35, "#CB53D1FF"],
-            [0.8, "#3859B2FF"],
+            [0.05, "#A83F9CFF"],
+            [0.35, "#A242A7FF"],
+            [0.8, "#2D478EFF"],
           ],
         },
         data: seriesData,

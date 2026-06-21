@@ -13,7 +13,7 @@ import {
 } from "@/app/(pages)/Home/components/shared/Highcharts/types";
 import { getSeriesSafe } from "@/app/(pages)/Home/components/shared/Highcharts/utils/getSeriesSafe";
 import { getUnitForMetric } from "@/utils/getUnitForMetric";
-import moment from "moment/moment";
+import dayjs from "@/utils/dayjs";
 import { pickNearestIndex } from "@/app/(pages)/Home/components/shared/Highcharts/utils/pickNearestIndex";
 import { toH24 } from "@/app/(pages)/Home/components/shared/Highcharts/utils/toH24";
 
@@ -74,8 +74,8 @@ export const useHighchartsModel = ({
   useEffect(() => {
     setCurrentTime(
       +timestamp === TIMESTAMP_24H
-        ? moment().hour()
-        : moment().locale("en").format("h A"),
+        ? dayjs().hour()
+        : dayjs().locale("en").format("h A"),
     );
   }, [timestamp]);
 
@@ -106,7 +106,13 @@ export const useHighchartsModel = ({
       { length: isMobile ? TIMESTAMP_12H : TIMESTAMP_24H },
       (_, i) => {
         const hour = isMobile ? i * TIME_STEP + 1 : i;
-        return moment({ hour }).locale("en").format(formatter);
+        return dayjs()
+          .hour(hour)
+          .minute(0)
+          .second(0)
+          .millisecond(0)
+          .locale("en")
+          .format(formatter);
       },
     );
   }, [isMobile, timestamp]);
@@ -185,10 +191,10 @@ export const useHighchartsModel = ({
   const jsonld = useMemo(() => {
     const label = highchartsMetrics[chosenMetric].label;
     const unit = getUnitForMetric(chosenMetric);
-    const start = moment(forecast[selectedDay]?.date)
+    const start = dayjs(forecast[selectedDay]?.date)
       .startOf("day")
       .toISOString();
-    const end = moment(forecast[selectedDay]?.date)
+    const end = dayjs(forecast[selectedDay]?.date)
       .hour(23)
       .minute(0)
       .second(0)
@@ -201,13 +207,13 @@ export const useHighchartsModel = ({
       name: t("highcharts.jsonld.name", {
         chosenMetric: label,
         city,
-        selectedDay: moment(selectedDay).format("DD MMMM YYYY"),
+        selectedDay: dayjs(selectedDay).format("DD MMMM YYYY"),
       }),
       description: t("highcharts.jsonld.description", {
         chosenMetric: label,
         metricUnit: unit,
         city,
-        selectedDay: moment(selectedDay).format("DD MMMM YYYY"),
+        selectedDay: dayjs(selectedDay).format("DD MMMM YYYY"),
       }),
       creator: { "@type": "Organization", name: "Verso" },
       datePublished: new Date().toISOString(),
@@ -216,9 +222,9 @@ export const useHighchartsModel = ({
       measurementTechnique: t("highcharts.jsonld.measurementTechnique"),
       dataset: {
         about: values.map((value: number, index: number) => {
-          const observationMoment = moment(forecast[selectedDay].date)
+          const observationMoment = dayjs(forecast[selectedDay].date)
             .hour(index)
-            .minutes(0)
+            .minute(0)
             .second(0)
             .millisecond(0);
           return {

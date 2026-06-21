@@ -1,12 +1,17 @@
 import { DEFAULT_LANG_STORE_NAME } from "@/constants/i18n";
-import { ACTIVE_DAY, TIMESTAMP } from "@/app/(pages)/Home/constants/shared";
+import {
+  ACTIVE_DAY,
+  TIMESTAMP,
+  CITY_LABEL,
+} from "@/app/(pages)/Home/constants/shared";
 import { REQUESTED_CITIES } from "@/constants";
 
 export type SubscriptionKeys =
   | typeof ACTIVE_DAY
   | typeof DEFAULT_LANG_STORE_NAME
   | typeof TIMESTAMP
-  | typeof REQUESTED_CITIES;
+  | typeof REQUESTED_CITIES
+  | typeof CITY_LABEL;
 
 export type SearchingCityStates = { status: "error" | "success" | "pending" };
 
@@ -15,6 +20,7 @@ export const payloadSchema = {
   [DEFAULT_LANG_STORE_NAME]: {} as string,
   [TIMESTAMP]: {} as number,
   [REQUESTED_CITIES]: {} as { status: "error" | "success" | "pending" },
+  [CITY_LABEL]: {} as string,
 } as const;
 
 export type PayloadByKey = {

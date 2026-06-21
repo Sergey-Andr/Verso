@@ -1,7 +1,7 @@
 import { Dispatch, RefObject, SetStateAction, useEffect, useMemo } from "react";
 import { MotionValue, useTransform } from "framer-motion";
 import type { TFunction } from "i18next";
-import moment from "moment/moment";
+import dayjs from "@/utils/dayjs";
 import { WeatherForecastData } from "@/types/forecast";
 
 type useBuildForecastPanelModelParams = {
@@ -76,7 +76,7 @@ export const useBuildForecastPanelModel = ({
     latest * 100 < 5 ? 0 : 16,
   );
 
-  const currentHour = moment().hour();
+  const currentHour = dayjs().hour();
   const days = useMemo(() => Object.values(weather), [weather]);
   const useSwiper = contentWidth !== null && contentWidth < 504;
 

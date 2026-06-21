@@ -204,6 +204,7 @@ const SearchCity = ({ isMobile = false }: { isMobile?: boolean }) => {
 
   const submitCity = (city: PreparedCity | undefined) => {
     if (!city) return;
+
     setCookie(
       LATEST_CITY,
       JSON.stringify({
@@ -213,7 +214,7 @@ const SearchCity = ({ isMobile = false }: { isMobile?: boolean }) => {
         lon: city.lon,
       }),
     );
-    router.push(`/погода/${city.city}/${city.country}/${city.lat}/${city.lon}`);
+    router.push(`/погода/${city.city}/${city.lat}/${city.lon}`);
     router.refresh();
     setDebounced("");
     setCityName("");

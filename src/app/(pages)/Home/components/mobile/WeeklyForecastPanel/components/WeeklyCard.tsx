@@ -1,7 +1,7 @@
 import React from "react";
 import { WeatherForecastData } from "@/types/forecast";
 import Image from "next/image";
-import moment from "moment/moment";
+import dayjs from "@/utils/dayjs";
 import {
   motion,
   MotionValue,
@@ -49,7 +49,7 @@ const WeeklyCard = ({
       }}
     >
       <h3 className="z-50 mb-3 text-base font-bold uppercase">
-        {moment(day.date).locale(i18n.language).format("ddd")}
+        {dayjs(day.date).locale(i18n.language).format("ddd")}
       </h3>
       <Image
         src={`/weather/${getWeatherIcon(day.weatherCode)}.png`}

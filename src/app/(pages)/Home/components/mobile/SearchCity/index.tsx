@@ -13,7 +13,6 @@ import { getStoredData } from "@/utils/store";
 import { REQUESTED_CITIES } from "@/constants";
 import { SearchingCityStates } from "@/types/subscriptions";
 import { PreparedCities } from "@/types/citySearch";
-import Image from "next/image";
 
 type SearchCityProps = {
   handleCitySearchBtn: HandleCitySearchBtn;
@@ -106,16 +105,8 @@ const SearchCityMobile = ({
         ref={closeBtnRef}
         aria-label={t("header.settings.close")}
         onClick={() => handleCitySearchBtn(false)}
-        className="relative z-50 mb-10 flex h-fit w-fit items-center"
+        className="h-8 w-8 before:absolute before:top-2 before:left-0 before:h-1 before:w-4 before:-rotate-45 before:bg-stone-400 after:absolute after:bottom-2.5 after:left-0 after:h-1 after:w-4 after:rotate-45 after:bg-stone-400"
       >
-        <Image
-          src="/shared/chevron.mobile.svg"
-          alt=""
-          aria-hidden
-          width={40}
-          height={40}
-          className="rotate-90 opacity-40"
-        />
         <p id={headingId} className="h-fit w-fit text-2xl">
           Verso
         </p>

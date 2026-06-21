@@ -1,7 +1,7 @@
 "use client";
-import React, { useMemo, useState } from "react";
+import React, { memo, useMemo, useState } from "react";
 import Image from "next/image";
-import moment from "moment";
+import dayjs from "@/utils/dayjs";
 import cx from "clsx";
 import { useTranslation } from "react-i18next";
 import { useSubscription } from "@/providers/WebSocketProvider";
@@ -27,7 +27,7 @@ const toInt = (n: number | string | undefined | null) =>
   Number.isFinite(n as number) ? Math.floor(n as number) : 0;
 
 function dayStr(date: string) {
-  return moment(date, "YYYY-MM-DD HH:mm:ss").format("YYYY-MM-DD");
+  return dayjs(date, "YYYY-MM-DD HH:mm:ss").format("YYYY-MM-DD");
 }
 function isSameDay(a: string, b: string) {
   return dayStr(a) === dayStr(b);
@@ -60,7 +60,7 @@ const DayHighlight = ({ forecast, currentDay, isMobile = false }: Props) => {
   const day = forecast[activeDay] ?? forecast[currentDay];
   if (!day) return null;
 
-  const now = moment();
+  const now = dayjs();
   const currentHour = now.hour();
   const isToday = isSameDay(day.date, now.format(MOMENT_FORMAT));
 
@@ -405,4 +405,4 @@ const DayHighlight = ({ forecast, currentDay, isMobile = false }: Props) => {
   );
 };
 
-export default DayHighlight;
+export default memo(DayHighlight);

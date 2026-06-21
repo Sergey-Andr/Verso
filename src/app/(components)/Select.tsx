@@ -64,8 +64,7 @@ const Select = ({ options, type, i18nPath, isMobile = false }: SelectProps) => {
     <li
       className={cx(
         "relative h-fit w-full",
-        isMobile ? "z-50" : "flex w-fit items-center justify-between text-sm",
-        isMobile && isOpen ? "z-100" : "",
+        !isMobile && "flex w-fit items-center justify-between text-sm",
       )}
     >
       <p
@@ -147,12 +146,10 @@ const Select = ({ options, type, i18nPath, isMobile = false }: SelectProps) => {
 
         <div
           className={cx(
-            "absolute bottom-0 z-10 mt-1 translate-y-15/12 overflow-hidden text-lg duration-300",
+            "absolute top-[calc(100%+0.75rem)] mt-1 grid overflow-hidden text-lg duration-300",
             isMobile ? "-ml-4 w-[calc(100%+2rem)]" : "w-full",
+            isOpen ? "grid-rows-[1fr]" : "grid-rows-[0fr]",
           )}
-          style={{
-            clipPath: isOpen ? "inset(0% 0% 0% 0%)" : "inset(0% 0% 100% 0%)",
-          }}
         >
           <ul
             id={listId}
@@ -160,7 +157,7 @@ const Select = ({ options, type, i18nPath, isMobile = false }: SelectProps) => {
             role="listbox"
             tabIndex={-1}
             aria-activedescendant={options[activeIndex]?.value}
-            className="relative z-50 flex h-full w-full flex-col gap-0.5 overflow-hidden duration-300"
+            className="relative z-50 flex h-fit flex-col gap-0.5 overflow-hidden duration-300"
           >
             {options.map((option, idx) => {
               const selectedNow = selected?.value === option.value;

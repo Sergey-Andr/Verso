@@ -57,7 +57,7 @@ const CitiesHeap = () => {
             className="group relative max-h-[268px] min-h-[268px] max-w-[230px] min-w-[230px] cursor-pointer"
           >
             <Link
-              href={`/погода/${encodeURIComponent(city.city)}/${encodeURIComponent(city.country)}/${city.lat}/${city.lon}`}
+              href={`/погода/${encodeURIComponent(city.city)}/${city.lat}/${city.lon}`}
             >
               <div className="relative z-50 flex h-full w-full flex-col items-center justify-center p-4 text-white">
                 <h5 className="mb-4 text-4xl">{city.city}</h5>

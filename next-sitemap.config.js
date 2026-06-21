@@ -4,7 +4,7 @@ import { readFile } from "node:fs/promises";
 
 const weather = encodeURIComponent("погода");
 
-module.exports = {
+const config = {
   siteUrl: "https://example.com",
   generateRobotsTxt: true,
 
@@ -25,3 +25,5 @@ module.exports = {
     });
   },
 };
+
+export default config;

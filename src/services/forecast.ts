@@ -1,4 +1,4 @@
-import moment from "moment/moment";
+import dayjs from "@/utils/dayjs";
 import { MOMENT_FORMAT } from "@/constants";
 import { ForecastProps, WeatherForecastData } from "@/types/forecast";
 
@@ -85,7 +85,7 @@ export const fetchForecast = async (
         airQuality.push(forecastAirData.hourly.european_aqi[hourlyIndex]);
       }
 
-      const currentDay = moment(forecastData.daily.time[dayIndex])
+      const currentDay = dayjs(forecastData.daily.time[dayIndex])
         .locale("uk")
         .format(MOMENT_FORMAT);
 
@@ -132,7 +132,7 @@ export const fetchDetailedSummary = async ({ lat, lon, city }) => {
 
   if (!response.ok) throw new Error(`Failed to fetch for ${city}`);
   const forecastData = await response.json();
-  const currentHour = moment().hour();
+  const currentHour = dayjs().hour();
   return {
     city,
     lon: forecastData.longitude,

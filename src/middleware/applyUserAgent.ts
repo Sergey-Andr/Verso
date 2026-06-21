@@ -1,18 +1,17 @@
-import { NextRequest } from "next/server";
-import { cookies } from "next/headers";
+import { NextRequest, NextResponse } from "next/server";
 import { USER_AGENT } from "@/constants";
 
-export async function applyUserAgentHeaders(
-  request: NextRequest,
-): Promise<void> {
-  const savedUA = (await cookies()).get("user-agent")?.value;
-  const currentUA = request.headers.get("user-agent");
+export function applyUserAgentHeaders(req: NextRequest, res: NextResponse) {
+  if (req.headers.get("sec-fetch-dest") !== "document") return;
 
-  if (!savedUA || savedUA !== currentUA) {
-    (await cookies()).set(
-      USER_AGENT,
-      /Mobile|Android|iPhone|iPad|iPod/i.test(currentUA) ? "mobile" : "desktop",
-      { maxAge: 365 * 24 * 60 * 60 },
-    );
+  const ua = req.headers.get("user-agent") ?? "";
+  const device = /Mobile|Tablet|Android|iPhone|iPad|iPod/i.test(ua)
+    ? "mobile"
+    : "desktop";
+  if (req.cookies.get(USER_AGENT)?.value !== device) {
+    res.cookies.set(USER_AGENT, device, {
+      maxAge: 365 * 24 * 60 * 60,
+      path: "/",
+    });
   }
 }

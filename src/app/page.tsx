@@ -1,19 +1,12 @@
-"use client";
-import { FIRST_CITY, LATEST_CITY, USER_AGENT } from "@/constants";
-import { getCookie, safeJsonParse, setCookie } from "@/utils/store";
-import { useEffect, useState } from "react";
-import { WeatherForecastData } from "@/types/forecast";
-import { useTranslation } from "react-i18next";
+import { cookies, headers } from "next/headers";
+import { FIRST_CITY, LATEST_CITY } from "@/constants";
+import { CITIES } from "@/constants/apiRequests";
 import { fetchForecast } from "@/services/forecast";
+import { WeatherForecastData } from "@/types/forecast";
 import WeatherPageMobile from "@/app/(pages)/Home/page.mobile";
 import WeatherPage from "@/app/(pages)/Home/page.desktop";
-import MainBackgroundLayer from "@/app/(components)/MainBackgroundLayer";
-import { translateSingle } from "@/services/aiTranslate";
-import { needsLLM } from "@/utils/needsLLM";
-import "moment/locale/uk";
-import "moment/locale/ru";
-import moment from "moment/moment";
-import dynamic from "next/dynamic";
+import HomeDesktopFooter from "@/app/(components)/HomeDesktopFooter";
+import CityLabelSync from "@/app/(components)/CityLabelSync";
 
 type Geo = {
   lat: number;
@@ -23,124 +16,76 @@ type Geo = {
   country: string;
 };
 
-const CitiesHeap = dynamic(
-  () => import("@/app/(pages)/Home/components/desktop/CitiesHeap"),
-  { ssr: false },
-);
+const parseGeo = (raw?: string): Geo | null => {
+  if (!raw) return null;
+  try {
+    return JSON.parse(raw) as Geo;
+  } catch {
+    return null;
+  }
+};
 
-export default function page() {
-  const [weather, setWeather] = useState<WeatherForecastData>();
-  const [isFirstEnter, setFirstEnter] = useState(false);
-  const [deviceType, setDeviceType] = useState("");
-  const [geo, setGeo] = useState<Geo | null>(null);
+const isMobileUA = (ua: string) =>
+  /mobile|tablet|android|iphone|ipad|ipod/i.test(ua);
 
-  const { t, i18n } = useTranslation();
+export default async function Page() {
+  const c = await cookies();
+  const h = await headers();
 
-  useEffect(() => {
-    if (moment.locale() !== i18n.language) moment.locale(i18n.language);
-  }, [i18n.language]);
+  const deviceType = isMobileUA(h.get("user-agent") ?? "")
+    ? "mobile"
+    : "desktop";
 
-  useEffect(() => {
-    const latest = safeJsonParse<Geo | null>(getCookie(LATEST_CITY));
-    const first = safeJsonParse<Geo | null>(getCookie(FIRST_CITY));
-    const ua = getCookie(USER_AGENT);
+  const latest = parseGeo(c.get(LATEST_CITY)?.value);
+  const first = parseGeo(c.get(FIRST_CITY)?.value);
 
-    setGeo(latest ?? first ?? null);
-    if (ua === "mobile" || ua === "desktop") setDeviceType(ua);
-    setFirstEnter(!latest);
-  }, []);
+  const geo: Geo = latest ??
+    first ?? {
+      lat: CITIES[0].lat,
+      lon: CITIES[0].lon,
+      cityEn: CITIES[0].id,
+      country: CITIES[0].iso2,
+    };
 
-  useEffect(() => {
-    if (!geo?.lat || !geo?.lon) return;
-    const ac = new AbortController();
+  const isFirstEnter = !latest;
+  const city = geo.cityLabel || geo.cityEn || "";
 
-    (async () => {
-      try {
-        const data = await fetchForecast(
-          { lat: geo.lat, lon: geo.lon },
-          { signal: ac.signal },
-        );
-        if (!ac.signal.aborted) setWeather(data);
-      } catch (e: any) {
-        if (e?.name !== "AbortError") console.error("forecast failed:", e);
-      }
-    })();
-
-    return () => ac.abort();
-  }, [geo?.lat, geo?.lon]);
-
-  useEffect(() => {
-    if (!geo?.cityEn) return;
-    const ac = new AbortController();
-
-    (async () => {
-      if (geo.cityLabel) return;
-
-      try {
-        if (!needsLLM(geo.cityEn, i18n.language)) {
-          const next = { ...geo, cityLabel: geo.cityEn };
-          setCookie(LATEST_CITY, JSON.stringify(next));
-        } else {
-          const tr = await translateSingle(geo.cityEn, i18n.language, {
-            signal: ac.signal,
-          });
-
-          if (!ac.signal.aborted) {
-            const next = { ...geo, cityLabel: (tr ?? "").trim() };
-            setGeo(next);
-            setCookie(LATEST_CITY, JSON.stringify(next));
-          }
-        }
-      } catch (e: any) {
-        if (e?.name !== "AbortError")
-          console.error("translate city failed:", e);
-      }
-    })();
-
-    return () => ac.abort();
-  }, [geo?.cityEn, i18n.language]);
-
-  const cityForUi = geo?.cityLabel || geo?.cityEn || "";
-
-  if ((deviceType === "mobile" && !weather) || !geo?.lat || !deviceType) {
-    return <></>;
+  let weather: WeatherForecastData | null = null;
+  try {
+    weather = await fetchForecast({ lat: geo.lat, lon: geo.lon });
+  } catch (e) {
+    console.error("forecast failed (server):", e);
   }
 
-  if (deviceType === "mobile" && weather) {
+  if (!weather) return null;
+
+  if (deviceType === "mobile") {
     return (
-      <WeatherPageMobile
-        weather={weather}
-        lat={geo.lat}
-        lon={geo.lon}
-        city={cityForUi}
-        isFirstEnter={isFirstEnter}
-      />
+      <>
+        <CityLabelSync geo={geo} hasLatest={!!latest} />
+        <WeatherPageMobile
+          weather={weather}
+          lat={geo.lat}
+          lon={geo.lon}
+          city={city}
+          isFirstEnter={isFirstEnter}
+        />
+      </>
     );
   }
 
   return (
     <>
-      {weather ? (
-        <WeatherPage
-          weather={weather}
-          lat={geo.lat}
-          lon={geo.lon}
-          city={cityForUi}
-          country={geo.country}
-          isFirstEnter={isFirstEnter}
-        />
-      ) : (
-        <div className="loader h-16 w-16" />
-      )}
-      <footer className="mt-16">
-        <div className="mb-12 h-fit w-full">
-          <div className="relative mx-auto h-fit w-fit px-4 py-1 text-2xl">
-            <h3 className="relative z-50">— {t("footer.label")} —</h3>
-            <MainBackgroundLayer borderWidth={2} />
-          </div>
-        </div>
-        <CitiesHeap />
-      </footer>
+      <CityLabelSync geo={geo} hasLatest={!!latest} />
+      <WeatherPage
+        weather={weather}
+        lat={geo.lat}
+        lon={geo.lon}
+        city={city}
+        country={geo.country}
+        isFirstEnter={isFirstEnter}
+      />
+      <HomeDesktopFooter />
     </>
   );
 }

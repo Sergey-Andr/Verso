@@ -1,4 +1,4 @@
-import React from "react";
+import React, { memo } from "react";
 import cx from "clsx";
 import { motion, MotionValue, useTransform } from "framer-motion";
 import Image from "next/image";
@@ -70,4 +70,4 @@ const PanelBackground = ({
   );
 };
 
-export default PanelBackground;
+export default memo(PanelBackground);

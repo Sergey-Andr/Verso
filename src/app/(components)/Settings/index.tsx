@@ -1,4 +1,5 @@
 import React, {
+  memo,
   useEffect,
   useId,
   useLayoutEffect,
@@ -9,7 +10,7 @@ import React, {
 import cx from "clsx";
 import { useTranslation } from "react-i18next";
 import Image from "next/image";
-import moment from "moment/moment";
+import dayjs from "@/utils/dayjs";
 import CloudsTrackAnimation from "@/app/(components)/Settings/components/CloudsTrackAnimation";
 import Link from "next/link";
 import Select from "@/app/(components)/Select";
@@ -59,12 +60,12 @@ const Settings = ({
   const { language, timestamp } = useMemo(() => {
     return {
       language: [
-        { label: t("header.settings.language_uk"), value: "uk" },
-        { label: t("header.settings.language_ru"), value: "ru" },
+        { label: "Українська", value: "uk" },
+        { label: "Русский", value: "ru" },
       ],
       timestamp: [
-        { label: moment().format("HH:mm"), value: "24" },
-        { label: moment().locale("en").format("hh:mm A"), value: "12" },
+        { label: dayjs().format("HH:mm"), value: "24" },
+        { label: dayjs().locale("en").format("hh:mm A"), value: "12" },
       ],
     };
   }, [i18n.language]);
@@ -160,22 +161,32 @@ const Settings = ({
         className="relative flex h-full min-h-fit w-full flex-col p-6"
         tabIndex={-1}
       >
+        <div
+          className="from-deep-indigo to-charcoal-indigo absolute inset-0 h-full w-full bg-linear-145"
+          aria-hidden
+        />
+        <div
+          className="bg-soft-purple/10 will-change-filter absolute inset-0 h-full w-full blur-3xl"
+          aria-hidden
+        />
+        <div
+          className="to-soft-purple/20 absolute inset-0 h-full w-full bg-gradient-to-b from-transparent from-50%"
+          aria-hidden
+        />
+        <div
+          className="bg-violet/35 will-change-filter absolute left-1/2 h-72 w-72 -translate-x-1/2 translate-y-1/6 rounded-full blur-3xl brightness-125"
+          aria-hidden
+        />
         <div ref={blocksRef}>
-          <button
-            aria-label={t("header.settings.close")}
-            onClick={() => handleSettingsBtn(false)}
-            className="relative z-50 mb-10 flex h-fit w-fit cursor-pointer items-center"
-          >
-            <Image
-              src="/shared/chevron.mobile.svg"
-              alt=""
-              aria-hidden
-              width={40}
-              height={40}
-              className="rotate-90 opacity-40"
+          <div className="relative z-50 mb-10 flex h-fit w-fit">
+            <button
+              type="button"
+              aria-label={t("header.settings.close")}
+              onClick={() => handleSettingsBtn(false)}
+              className="h-8 w-8 before:absolute before:top-2 before:left-0 before:h-1 before:w-4 before:-rotate-45 before:bg-stone-400 after:absolute after:bottom-2.5 after:left-0 after:h-1 after:w-4 after:rotate-45 after:bg-stone-400"
             />
-            <p className="h-fit w-fit text-2xl">Verso</p>
-          </button>
+            <p className="ml-3 h-fit w-fit text-2xl">Verso</p>
+          </div>
 
           <h2
             id={titleId}
@@ -184,7 +195,13 @@ const Settings = ({
             {t("header.settings.label_settings")}
           </h2>
 
-          <article className="relative mb-10 h-fit w-full p-4">
+          <article
+            className={cx(
+              "relative mb-10 h-fit w-full p-4",
+              "[&:has(li:last-child_button[aria-expanded='true'])>div]:rounded-b-none",
+            )}
+          >
+            <div className="absolute inset-0 rounded-2xl border border-white bg-[#48319D]/20 mix-blend-overlay" />
             <ul>
               <Select
                 options={language}
@@ -200,10 +217,8 @@ const Settings = ({
                 isMobile
               />
             </ul>
-            <div className="absolute inset-0 z-30 rounded-2xl border border-white bg-[#48319D]/20 mix-blend-overlay" />
           </article>
-
-          <h2 className="relative z-50 mb-6 w-full text-center text-sm tracking-[1px] text-white/75 uppercase">
+          <h2 className="relative mb-6 w-full text-center text-sm tracking-[1px] text-white/75 uppercase">
             {t("header.settings.label_about_us")}
           </h2>
 
@@ -211,7 +226,7 @@ const Settings = ({
             <ul>
               <li
                 className={cx(
-                  "relative z-60 h-fit w-full",
+                  "relative z-50 h-fit w-full",
                   isInstalled ? "opacity-60" : "",
                   canInstall ? "" : "touch-none",
                 )}
@@ -368,25 +383,9 @@ const Settings = ({
             {t("version")}: 1.0.0
           </p>
         </div>
-        <div
-          className="from-deep-indigo to-charcoal-indigo absolute inset-0 h-full w-full bg-linear-145"
-          aria-hidden
-        />
-        <div
-          className="bg-soft-purple/10 will-change-filter absolute inset-0 z-1 h-full w-full blur-3xl"
-          aria-hidden
-        />
-        <div
-          className="to-soft-purple/20 absolute inset-0 z-1 h-full w-full bg-gradient-to-b from-transparent from-50%"
-          aria-hidden
-        />
-        <div
-          className="bg-violet/35 will-change-filter absolute left-1/2 h-72 w-72 -translate-x-1/2 translate-y-1/6 rounded-full blur-3xl brightness-125"
-          aria-hidden
-        />
       </div>
     </section>
   );
 };
 
-export default Settings;
+export default memo(Settings);

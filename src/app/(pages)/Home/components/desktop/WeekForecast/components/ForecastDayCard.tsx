@@ -1,6 +1,6 @@
 import React from "react";
 import Image from "next/image";
-import moment from "moment/moment";
+import dayjs from "@/utils/dayjs";
 import { MOMENT_FORMAT } from "@/constants";
 import { subscription } from "@/services/subscription";
 import { DailyWeatherForecastData } from "@/types/forecast";
@@ -27,10 +27,10 @@ const ForecastDayCard = ({
     });
   };
 
-  const dayWeek = moment(day.date).locale(i18n.language).format("dd");
-  const dateTime = moment(day.date, MOMENT_FORMAT).toISOString();
+  const dayWeek = dayjs(day.date).locale(i18n.language).format("dd");
+  const dateTime = dayjs(day.date, MOMENT_FORMAT).toISOString();
   const formattedDayWeek =
-    dayWeek === moment().locale(i18n.language).format("dd")
+    dayWeek === dayjs().locale(i18n.language).format("dd")
       ? t("week_forecast.today")
       : dayWeek.slice(0, 1).toUpperCase() + dayWeek.slice(1);
 

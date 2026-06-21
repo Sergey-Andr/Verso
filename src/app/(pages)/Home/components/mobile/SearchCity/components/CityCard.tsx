@@ -90,7 +90,7 @@ const CityCard = ({ city, t, i, handleCitySearchBtn }: CityCardProps) => {
           );
           handleCitySearchBtn(false);
         }}
-        href={`/${encodeURIComponent("погода")}/${city.city}/${city.country}/${city.lat}/${city.lon}`}
+        href={`/${encodeURIComponent("погода")}/${city.city}/${city.lat}/${city.lon}`}
         className="absolute inset-0 z-50 h-full w-full"
       />
     </li>

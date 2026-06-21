@@ -1,4 +1,4 @@
-import React, { RefObject, Suspense, useRef, useState } from "react";
+import React, { memo, RefObject, Suspense, useRef, useState } from "react";
 import { motion, MotionValue } from "framer-motion";
 import { WeatherForecastData } from "@/types/forecast";
 import { useTranslation } from "react-i18next";
@@ -137,4 +137,4 @@ const WeeklyForecastPanel = ({
   );
 };
 
-export default WeeklyForecastPanel;
+export default memo(WeeklyForecastPanel);

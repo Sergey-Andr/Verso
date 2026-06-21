@@ -1,14 +1,11 @@
 import { CITIES } from "@/constants/apiRequests";
 import { FIRST_CITY } from "@/constants";
-import { cookies } from "next/headers";
 import { NextRequest } from "next/server";
 import { useTranslation } from "@/../i18n.server";
 import { countryName } from "@/constants/countries";
 
-const fetchUserGeolocation = async (req: NextRequest) => {
-  const cookie = await cookies();
-  const existingCookie = cookie.get(FIRST_CITY)?.value;
-  if (existingCookie) return;
+const fetchUserGeolocation = async (req: NextRequest): Promise<void> => {
+  if (req.cookies.get(FIRST_CITY)?.value) return;
 
   const headers = new Headers();
   if (process.env.NODE_ENV !== "production")
@@ -28,32 +25,24 @@ const fetchUserGeolocation = async (req: NextRequest) => {
       throw new Error(`API error: ${data.message || "status is not success"}`);
 
     const { i18n } = await useTranslation();
-    setGeolocation({
-      data: {
-        ...data,
-        country: await countryName(data.country, i18n.language),
-      },
-      cookie,
+    setGeolocation(req, {
+      ...data,
+      country: await countryName(data.country, i18n.language),
     });
   } catch (error) {
     console.error("Geolocation fetch failed, using fallback:", error);
-    setGeolocation({
-      data: {
-        lat: CITIES[0].lat,
-        lon: CITIES[0].lon,
-        cityEn: CITIES[0].id,
-        country: CITIES[0].iso2,
-      },
-      cookie,
+    setGeolocation(req, {
+      lat: CITIES[0].lat,
+      lon: CITIES[0].lon,
+      cityEn: CITIES[0].id,
+      country: CITIES[0].iso2,
     });
   }
 };
 
 export default fetchUserGeolocation;
 
-async function setGeolocation({ data, cookie }) {
+function setGeolocation(req: NextRequest, data: any) {
   const { lat, lon, cityEn, country } = data;
-  cookie.set(FIRST_CITY, JSON.stringify({ lat, lon, cityEn, country }), {
-    maxAge: 365 * 24 * 60 * 60,
-  });
+  req.cookies.set(FIRST_CITY, JSON.stringify({ lat, lon, cityEn, country }));
 }
