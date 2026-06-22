@@ -93,7 +93,7 @@ const MainWeatherDisplay = ({
       </motion.section>
       <div className="hsm:inline-flex vp:visual-scale vp:visual-bottom absolute hidden">
         <Image
-          src="/shared/house.mobile.png"
+          src="/shared/house.mobile.webp"
           alt=""
           fill
           priority
@@ -113,7 +113,7 @@ const MainWeatherDisplay = ({
           height="140"
           loading="lazy"
           className={cx(
-            "test absolute -top-1/4 right-0 -z-1 h-auto",
+            "cloud-drift absolute -top-1/4 right-0 -z-1 h-auto",
             weatherCode === 0 ? "icon-sun w-36" : "w-44 translate-y-full",
           )}
         />

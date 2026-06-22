@@ -10,13 +10,13 @@ export default function Head() {
       <link
         rel="preload"
         as="image"
-        imageSrcSet="/shared/house.png"
+        imageSrcSet="/shared/house.webp"
         imageSizes="(min-width:1280px) 450px, 90vw"
       />
       <link
         rel="preload"
         as="image"
-        imageSrcSet="/shared/house.mobile.png"
+        imageSrcSet="/shared/house.mobile.webp"
         imageSizes="(min-width:1280px) 360px, 360px"
       />
     </>

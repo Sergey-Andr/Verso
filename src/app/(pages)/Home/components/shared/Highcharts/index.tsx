@@ -230,4 +230,4 @@ const DayHighchartsMetrics = ({
   );
 };
 
-export default memo(DayHighchart
+export default memo(DayHighchartsMetrics);

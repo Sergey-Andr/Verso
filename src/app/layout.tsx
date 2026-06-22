@@ -150,7 +150,7 @@ export default async function RootLayout({
         <body className="h-full w-full">
           <Image
             className="absolute top-0 left-0 -z-3 h-full w-full object-cover"
-            src="/background/bg-night-sky.mobile.jpg"
+            src="/background/bg-night-sky.mobile.webp"
             alt=""
             fill
             priority

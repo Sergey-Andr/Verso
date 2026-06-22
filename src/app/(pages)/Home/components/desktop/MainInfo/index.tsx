@@ -83,7 +83,7 @@ const MainInfo = ({
         <div className="bg-violet absolute top-0 left-0 -z-1 h-full w-full rounded-3xl blur-3xl brightness-125" />
       </div>
       <Image
-        src="/shared/house.png"
+        src="/shared/house.webp"
         alt=""
         width={400}
         height={210}

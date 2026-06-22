@@ -94,7 +94,7 @@
     }
 }
 
-.test {
+.cloud-drift {
     will-change: transform;
 
     animation: cloud-drift-x 16s ease-in-out infinite alternate,

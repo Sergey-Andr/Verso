@@ -29,7 +29,7 @@ const PanelBackground = ({
       >
         <Image
           className="absolute bottom-0 h-screen w-screen object-cover"
-          src="/background/bg-night-sky.mobile.jpg"
+          src="/background/bg-night-sky.mobile.webp"
           alt="main background"
           fill
           priority
@@ -39,7 +39,7 @@ const PanelBackground = ({
           blurDataURL="/background/blurred-night-sky.mobile.jpg"
         />
         <Image
-          src="/shared/house.mobile.png"
+          src="/shared/house.mobile.webp"
           alt=""
           aria-hidden
           fill
@@ -51,7 +51,7 @@ const PanelBackground = ({
       </motion.div>
       <motion.div
         className={cx(
-          "bg-violet/5 absolute inset-0 z-10 h-full w-full touch-none backdrop-blur-2xl will-change-[backdrop-filter]",
+          "bg-violet/5 absolute inset-0 z-10 h-full w-full touch-none backdrop-blur-2xl",
         )}
         style={{
           borderRadius,
