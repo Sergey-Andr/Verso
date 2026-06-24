@@ -1,0 +1,178 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="9f205f81-0652-43e7-a41d-0a8af620bf25" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/src/app/(components)/AllowGeolocationPanel.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/codeStyles/Project.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/prettier.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/prettier.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Dockerfile" beforeDir="false" afterPath="$PROJECT_DIR$/Dockerfile" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/robots.txt" beforeDir="false" afterPath="$PROJECT_DIR$/public/robots.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/shared/acceleration.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/shared/close.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/sitemap-0.xml" beforeDir="false" afterPath="$PROJECT_DIR$/public/sitemap-0.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/sitemap-1.xml" beforeDir="false" afterPath="$PROJECT_DIR$/public/sitemap-1.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/sitemap-2.xml" beforeDir="false" afterPath="$PROJECT_DIR$/public/sitemap-2.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/sitemap-3.xml" beforeDir="false" afterPath="$PROJECT_DIR$/public/sitemap-3.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/sitemap-4.xml" beforeDir="false" afterPath="$PROJECT_DIR$/public/sitemap-4.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/sitemap-5.xml" beforeDir="false" afterPath="$PROJECT_DIR$/public/sitemap-5.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/sitemap-6.xml" beforeDir="false" afterPath="$PROJECT_DIR$/public/sitemap-6.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/sitemap.xml" beforeDir="false" afterPath="$PROJECT_DIR$/public/sitemap.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/(components)/HomeDesktopFooter.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/(components)/HomeDesktopFooter.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/(components)/MainBackgroundLayer.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/(components)/MainBackgroundLayer.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/(pages)/Home/components/desktop/CitiesHeap.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/(pages)/Home/components/desktop/CitiesHeap.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/(pages)/Home/components/desktop/MainInfo/components/AllowGeolocationPanel.tsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/(pages)/Home/components/desktop/MainInfo/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/(pages)/Home/components/desktop/MainInfo/index.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/(pages)/Home/components/mobile/MainWeatherDisplay/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/(pages)/Home/components/mobile/MainWeatherDisplay/index.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/(pages)/Home/constants/desktop.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/(pages)/Home/hooks/useFpsMonitor.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/(pages)/Home/page.desktop.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/(pages)/Home/page.desktop.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/globals.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/globals.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/page.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/constants/apiRequests.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/constants/apiRequests.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/locales/ru/translation.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/locales/ru/translation.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/locales/uk/translation.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/locales/uk/translation.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/provider.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/provider.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/proxy.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/proxy.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/services/forecast.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/services/forecast.ts" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FormatOnSaveOptions">
+    <option name="myRunOnSave" value="true" />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="GitHubPullRequestSearchHistory"><![CDATA[{
+  "lastFilter": {
+    "state": "OPEN",
+    "assignee": "Sergey-Andr"
+  }
+}]]></component>
+  <component name="GithubPullRequestsUISettings"><![CDATA[{
+  "selectedUrlAndAccountId": {
+    "url": "https://github.com/Sergey-Andr/Verso.git",
+    "accountId": "8bba34cc-8509-4d94-9cf7-99de455b6712"
+  }
+}]]></component>
+  <component name="OptimizeOnSaveOptions">
+    <option name="myRunOnSave" value="true" />
+  </component>
+  <component name="ProjectColorInfo"><![CDATA[{
+  "associatedIndex": 6
+}]]></component>
+  <component name="ProjectId" id="3FaCSQFuv272Ngf8t1Ayz49kgiu" />
+  <component name="ProjectLevelVcsManager">
+    <ConfirmationsSetting value="2" id="Add" />
+  </component>
+  <component name="ProjectViewState">
+    <option name="autoscrollFromSource" value="true" />
+    <option name="autoscrollToSource" value="true" />
+    <option name="openDirectoriesWithSingleClick" value="true" />
+  </component>
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "RunOnceActivity.git.unshallow": "true",
+    "code.cleanup.on.save": "true",
+    "git-widget-placeholder": "d994a4cb",
+    "js.debugger.nextJs.config.created.client": "true",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.standard": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.standard": "",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "npm.build.executor": "Run",
+    "npm.dev.executor": "Run",
+    "npm.start.executor": "Run",
+    "prettierjs.PrettierConfiguration.Package": "C:\\Users\\andri\\verso_weather\\node_modules\\prettier",
+    "rearrange.code.on.save": "true",
+    "settings.editor.selected.configurable": "actions.on.save",
+    "ts.external.directory.path": "D:\\WebStorm 2025.1.3\\plugins\\javascript-plugin\\jsLanguageServicesImpl\\external",
+    "vue.rearranger.settings.migration": "true"
+  }
+}]]></component>
+  <component name="RunManager" selected="npm.dev">
+    <configuration name="Next.js: debug client-side" type="JavascriptDebugType" uri="http://localhost:5174/">
+      <method v="2" />
+    </configuration>
+    <configuration name="build" type="js.build_tools.npm" temporary="true" nameIsGenerated="true">
+      <package-json value="$PROJECT_DIR$/package.json" />
+      <command value="run" />
+      <scripts>
+        <script value="build" />
+      </scripts>
+      <node-interpreter value="project" />
+      <envs />
+      <method v="2" />
+    </configuration>
+    <configuration name="dev" type="js.build_tools.npm" temporary="true" nameIsGenerated="true">
+      <package-json value="$PROJECT_DIR$/package.json" />
+      <command value="run" />
+      <scripts>
+        <script value="dev" />
+      </scripts>
+      <node-interpreter value="project" />
+      <envs />
+      <method v="2" />
+    </configuration>
+    <configuration name="start" type="js.build_tools.npm" temporary="true" nameIsGenerated="true">
+      <package-json value="$PROJECT_DIR$/package.json" />
+      <command value="run" />
+      <scripts>
+        <script value="start" />
+      </scripts>
+      <node-interpreter value="project" />
+      <envs />
+      <method v="2" />
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="npm.dev" />
+        <item itemvalue="npm.start" />
+        <item itemvalue="npm.build" />
+      </list>
+    </recent_temporary>
+  </component>
+  <component name="SharedIndexes">
+    <attachedChunks>
+      <set>
+        <option value="bundled-js-predefined-d6986cc7102b-e03c56caf84a-JavaScript-WS-252.23892.411" />
+      </set>
+    </attachedChunks>
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="9f205f81-0652-43e7-a41d-0a8af620bf25" name="Changes" comment="" />
+      <created>1782303796562</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1782303796562</updated>
+      <workItem from="1782303801278" duration="7220000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
+</project>

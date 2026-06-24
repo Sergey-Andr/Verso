@@ -119,7 +119,7 @@ export const fetchDetailedSummary = async ({ lat, lon, city }) => {
   const params = new URLSearchParams({
     latitude: String(lat),
     longitude: String(lon),
-    daily: "weather_code,temperature_2m_max,temperature_2m_min",
+    daily: "weather_code,temperature_2m_max,temperature_2m_min,precipitation_probability_mean,wind_speed_10m_max",
     hourly:
       "temperature_2m,cloud_cover_low,shortwave_radiation,diffuse_radiation,cloud_cover_mid,cloud_cover_high,direct_normal_irradiance_instant,cloud_cover",
     timezone: "auto",
@@ -133,6 +133,7 @@ export const fetchDetailedSummary = async ({ lat, lon, city }) => {
   if (!response.ok) throw new Error(`Failed to fetch for ${city}`);
   const forecastData = await response.json();
   const currentHour = dayjs().hour();
+
   return {
     city,
     lon: forecastData.longitude,
@@ -141,5 +142,7 @@ export const fetchDetailedSummary = async ({ lat, lon, city }) => {
     tempMin: forecastData.daily.temperature_2m_min[0],
     tempMax: forecastData.daily.temperature_2m_max[0],
     temperature: forecastData.hourly.temperature_2m[currentHour],
+    windSpeed: forecastData.daily.wind_speed_10m_max[0],
+    precipitation: forecastData.daily.precipitation_probability_mean[0],
   };
 };

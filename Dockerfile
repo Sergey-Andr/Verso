@@ -11,7 +11,6 @@ ENV CI=true
 COPY --from=deps /app/node_modules ./node_modules
 COPY . .
 RUN npm run build
-RUN npm run build:server
 
 FROM node:22.17.0-slim AS prod-deps
 WORKDIR /app
@@ -41,8 +40,7 @@ COPY --chown=1001:1001 --from=builder /app/.next ./.next
 COPY --from=builder   /app/public           ./public
 COPY --from=builder   /app/next.config.*    ./
 COPY --from=builder   /app/package*.json    ./
-COPY --from=builder   /app/dist/server.js   ./server.cjs
 
 USER 1001
 EXPOSE 8080
-CMD ["node", "server.cjs"]
+CMD ["npm", "run", "start"]

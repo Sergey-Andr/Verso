@@ -7,9 +7,9 @@ import { PULL_UP_LIMIT } from "@/app/(pages)/Home/constants/mobile";
 import "@/app/globals.css";
 import { getPrecipitation } from "@/app/(pages)/Home/components/mobile/MainWeatherDisplay/features/getPrecipitation";
 import { getWeatherIcon } from "@/app/(pages)/Home/components/mobile/MainWeatherDisplay/features/getWeatherIcon";
-import AllowGeolocationPanel from "@/app/(pages)/Home/components/desktop/MainInfo/components/AllowGeolocationPanel";
 import cx from "clsx";
 import WeatherPrecipitation from "@/app/(pages)/Home/components/mobile/MainWeatherDisplay/components/WeatherPrecipitation";
+import AllowGeolocationPanel from "@/app/(components)/AllowGeolocationPanel";
 
 type MainWeatherDisplayProps = {
   mainWeatherOpacity: MotionValue<number>;
@@ -38,7 +38,7 @@ const MainWeatherDisplay = ({
   t,
   isFirstEnter,
 }: MainWeatherDisplayProps) => {
-  const weatherCode = 99;
+  const weatherCode = weather[activeDay].weatherCode;
   const precip = getPrecipitation(weatherCode);
   const weatherIcon = getWeatherIcon(weatherCode);
 

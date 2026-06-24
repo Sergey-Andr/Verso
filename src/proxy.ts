@@ -14,7 +14,6 @@ export async function proxy(req: NextRequest) {
 
   applyUserAgentHeaders(req, res);
 
-  // Зеркалим FIRST_CITY в ответ, чтобы браузер сохранил куку для следующих запросов.
   const fc = req.cookies.get(FIRST_CITY)?.value;
   if (fc)
     res.cookies.set(FIRST_CITY, fc, {

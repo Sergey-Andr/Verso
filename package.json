@@ -6,7 +6,7 @@
   "scripts": {
     "dev": "next dev -p 5174 --turbopack",
     "build": "next build",
-    "start": "next start -p 5174",
+    "start": "next start -p 8080",
     "postbuild": "next-sitemap",
     "lint": "next lint"
   },
