@@ -12,27 +12,16 @@ import Provider from "@/provider";
 import { ResourcesOptions } from "@/types/i18n";
 import cx from "clsx";
 import Script from "next/script";
-import { userAgent } from "next/server";
-import localFont from "next/font/local";
+import { Inter } from "next/font/google";
+import {
+  BLURED_NIGHT_SKY,
+  BLURED_NIGHT_SKY_MOBILE,
+  USER_AGENT,
+} from "@/constants";
 
-const inter = localFont({
-  src: [
-    {
-      path: "../../public/fonts/inter-thin.woff2",
-      weight: "100",
-      style: "normal",
-    },
-    {
-      path: "../../public/fonts/inter-regular.woff2",
-      weight: "400",
-      style: "normal",
-    },
-    {
-      path: "../../public/fonts/inter-semiBold.woff2",
-      weight: "600",
-      style: "normal",
-    },
-  ],
+const inter = Inter({
+  subsets: ["latin", "cyrillic"],
+  display: "swap",
   preload: true,
   variable: "--font-inter",
   fallback: ["system-ui", "Arial"],
@@ -77,11 +66,7 @@ export default async function RootLayout({
   const lng = (await cookies()).get(DEFAULT_LANG_STORE_NAME)?.value || "uk";
   await useTranslation();
   const h = await headers();
-  const deviceType = /mobile|tablet|android|iphone|ipad|ipod/i.test(
-    userAgent({ headers: h }).ua,
-  )
-    ? "mobile"
-    : "desktop";
+  const deviceType = (await cookies()).get(USER_AGENT)?.value;
 
   return (
     <html
@@ -90,6 +75,30 @@ export default async function RootLayout({
       className={cx("main-content h-full w-full", inter.variable)}
       style={{ paddingBottom: "env(safe-area-inset-bottom, 24px)" }}
     >
+      <head>
+        <link
+          rel="preconnect"
+          href="https://api.open-meteo.com"
+          crossOrigin=""
+        />
+        <link
+          rel="preconnect"
+          href="https://air-quality-api.open-meteo.com"
+          crossOrigin=""
+        />
+        <link
+          rel="preload"
+          as="image"
+          imageSrcSet="/shared/house.webp"
+          imageSizes="(min-width:1280px) 450px, 90vw"
+        />
+        <link
+          rel="preload"
+          as="image"
+          imageSrcSet="/shared/house.mobile.webp"
+          imageSizes="(min-width:1280px) 360px, 360px"
+        />
+      </head>
       {deviceType === "desktop" ? (
         <>
           <body>
@@ -114,7 +123,7 @@ export default async function RootLayout({
                 fill
                 priority
                 placeholder="blur"
-                blurDataURL="/background/blurred-night-sky.jpg"
+                blurDataURL={BLURED_NIGHT_SKY}
               />
               <Provider
                 locale={lng}
@@ -155,7 +164,7 @@ export default async function RootLayout({
             fill
             priority
             placeholder="blur"
-            blurDataURL="/background/blurred-night-sky.mobile.jpg"
+            blurDataURL={BLURED_NIGHT_SKY_MOBILE}
           />
           <Provider locale={lng} resources={resources} deviceType={deviceType}>
             {children}

@@ -9,3 +9,7 @@ README.md
 *.local
 .next
 env.yaml
+.idea/
+next-env.d.ts
+/public/sitemap.xml
+/public/sitemap-*.xml

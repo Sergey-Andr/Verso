@@ -2,6 +2,7 @@ import React, { memo } from "react";
 import cx from "clsx";
 import { motion, MotionValue, useTransform } from "framer-motion";
 import Image from "next/image";
+import { BLURED_NIGHT_SKY_MOBILE } from "@/constants";
 
 type PanelBackgroundProps = {
   mainWeatherOpacity: MotionValue<number>;
@@ -36,7 +37,7 @@ const PanelBackground = ({
           sizes="100vw"
           fetchPriority="high"
           placeholder="blur"
-          blurDataURL="/background/blurred-night-sky.mobile.jpg"
+          blurDataURL={BLURED_NIGHT_SKY_MOBILE}
         />
         <Image
           src="/shared/house.mobile.webp"

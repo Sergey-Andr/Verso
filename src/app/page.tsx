@@ -1,5 +1,5 @@
 import { cookies, headers } from "next/headers";
-import { FIRST_CITY, LATEST_CITY } from "@/constants";
+import { FIRST_CITY, LATEST_CITY, USER_AGENT } from "@/constants";
 import { CITIES } from "@/constants/apiRequests";
 import { fetchForecast } from "@/services/forecast";
 import { WeatherForecastData } from "@/types/forecast";
@@ -25,16 +25,10 @@ const parseGeo = (raw?: string): Geo | null => {
   }
 };
 
-const isMobileUA = (ua: string) =>
-  /mobile|tablet|android|iphone|ipad|ipod/i.test(ua);
-
 export default async function Page() {
   const c = await cookies();
-  const h = await headers();
 
-  const deviceType = isMobileUA(h.get("user-agent") ?? "")
-    ? "mobile"
-    : "desktop";
+  const deviceType = (await cookies()).get(USER_AGENT)?.value;
 
   const latest = parseGeo(c.get(LATEST_CITY)?.value);
   const first = parseGeo(c.get(FIRST_CITY)?.value);

@@ -1,19 +1,18 @@
 "use client";
-import React, {useMemo, useRef, useState} from "react";
+import React, { useMemo, useRef, useState } from "react";
 import Image from "next/image";
 import dayjs from "@/utils/dayjs";
-import {MOMENT_FORMAT} from "@/constants";
-import {useSubscription} from "@/providers/WebSocketProvider";
-import {useTranslation} from "react-i18next";
-import {WeatherForecastData} from "@/types/forecast";
-import {ACTIVE_DAY, PEAK_TIME} from "@/app/(pages)/Home/constants/shared";
-import {getWeatherIcon} from "@/utils/getWeatherIcon";
+import { MOMENT_FORMAT } from "@/constants";
+import { useSubscription } from "@/providers/WebSocketProvider";
+import { useTranslation } from "react-i18next";
+import { WeatherForecastData } from "@/types/forecast";
+import { ACTIVE_DAY, PEAK_TIME } from "@/app/(pages)/Home/constants/shared";
+import { getWeatherIcon } from "@/utils/getWeatherIcon";
 import customParseFormat from "dayjs/plugin/customParseFormat";
 import AllowGeolocationPanel from "@/app/(components)/AllowGeolocationPanel";
-import WeatherPrecipitation
-    from "@/app/(pages)/Home/components/mobile/MainWeatherDisplay/components/WeatherPrecipitation";
+import WeatherPrecipitation from "@/app/(pages)/Home/components/mobile/MainWeatherDisplay/components/WeatherPrecipitation";
 import cx from "clsx";
-import {getPrecipitation} from "@/app/(pages)/Home/components/mobile/MainWeatherDisplay/features/getPrecipitation";
+import { getPrecipitation } from "@/app/(pages)/Home/components/mobile/MainWeatherDisplay/features/getPrecipitation";
 
 type MainInfoProps = {
   forecast: WeatherForecastData;

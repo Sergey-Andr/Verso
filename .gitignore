@@ -9,6 +9,11 @@
 !.yarn/plugins
 !.yarn/releases
 !.yarn/versions
+.idea/
+next-env.d.ts 
+
+/public/sitemap.xml
+/public/sitemap-*.xml
 
 # testing
 /coverage
@@ -39,3 +44,6 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+
+# build output
+/dist
